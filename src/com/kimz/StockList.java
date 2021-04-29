@@ -24,4 +24,14 @@ public class StockList {
         }
         return 0;
     }
+
+    public int sellStock(String item, int quantity){
+        //assumption is that item is on list - null
+        StockItem inStock = list.getOrDefault(item, null);
+        if((inStock!=null) && (inStock.getQuantityStock()>=quantity) &&(quantity>0)){
+            inStock.adjustStock(-quantity);
+            return quantity;
+        }
+        return 0;
+    }
 }
